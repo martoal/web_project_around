@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form_open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.form__info {
+  width: 358px;
+  height: 27px;
+  border: 0;
+  border-bottom: solid 1px;
+  opacity: 20%;
+  margin-bottom: 20px;
+}
+
+.form__button {
+  border-radius: 1%;
+  margin-top: 30px;
+  width: 358px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+.form__button:hover {
+  background: grey;
+  cursor: pointer;
+}
+@media screen and (max-width: 799px) {
+  .form__info {
+    width: 238px;
+    height: 26px;
+  }
+  .form__button {
+    width: 238px;
+    height: 46px;
+  }
+}

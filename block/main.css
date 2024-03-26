@@ -1,0 +1,64 @@
+.main {
+  margin: auto;
+  max-width: 882px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+
+  grid-gap: 18px;
+}
+.main__card {
+  background-color: white;
+  border-radius: 3%;
+  position: relative;
+}
+.main__card-trash {
+  position: absolute;
+  right: 15px;
+  top: 17px;
+  cursor: pointer;
+}
+.main__card-trash:hover {
+  opacity: 0.8;
+}
+.main__card-image {
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+  width: 100%;
+  height: 282px;
+}
+.main__text {
+  display: flex;
+  width: 246px;
+  height: 23px;
+  margin: 20px auto;
+  align-items: flex-end;
+}
+.main__card-title {
+  justify-content: space-between;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-y: hidden;
+  margin: 0;
+
+  width: 220px;
+  height: 28px;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+}
+.like-image {
+  width: 21px;
+  height: 19px;
+  cursor: pointer;
+}
+.like-image:visited {
+  opacity: 0.9;
+  color: black;
+}
+@media screen and (max-width: 799px) {
+  .main {
+    max-width: 300px;
+    justify-content: center;
+  }
+}
