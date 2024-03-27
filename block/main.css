@@ -1,4 +1,5 @@
 .main {
+  justify-items: center;
   margin: auto;
   max-width: 882px;
   display: grid;
@@ -10,6 +11,7 @@
   background-color: white;
   border-radius: 3%;
   position: relative;
+  max-width: 282px;
 }
 .main__card-trash {
   position: absolute;
@@ -23,7 +25,7 @@
 .main__card-image {
   border-top-left-radius: 3%;
   border-top-right-radius: 3%;
-  width: 100%;
+  width: 282px;
   height: 282px;
 }
 .main__text {
@@ -60,5 +62,11 @@
   .main {
     max-width: 300px;
     justify-content: center;
+  }
+}
+@media screen and (max-width: 879px) {
+  .main__card {
+    width: 100%;
+    margin: 10px;
   }
 }
