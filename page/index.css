@@ -6,6 +6,7 @@
 @import url(../block/main.css);
 @import url(../block/form.css);
 @import url(../block/popup.css);
+@import url(../vendor/fonts/fonts.css);
 
 body {
   margin: 0;
