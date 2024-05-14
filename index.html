@@ -35,88 +35,20 @@
         <button type="button" id="open-add" class="add-button"></button>
       </div>
       <main class="main">
-        <div class="main__card">
-          <img src="./images/Trash.svg" alt="" class="main__card-trash" />
-          <img
-            src="./images/cerro_castillo.jpeg"
-            alt=""
-            class="main__card-image"
-          />
-
-          <div class="main__text">
-            <p class="main__card-title">Cerro castillo</p>
-            <img
-              src="./images/Vector2.svg"
-              alt="corazon-me-gusta"
-              class="like-image"
-            />
+        <template class="main__template">
+          <div class="main__card">
+            <button class="main__card-trash">
+              <img src="./images/Trash.svg" alt="" />
+            </button>
+            <img src="" alt="" class="main__card-image" />
+            <div class="main__text">
+              <h2 class="main__card-title"></h2>
+              <button class="like-image">
+                <img src="./images/Vector2.svg" alt="corazon-me-gusta" />
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="main__card">
-          <img src="./images/Trash.svg" alt="" class="main__card-trash" />
-          <img
-            src=".//images/machu_pichu.jpeg"
-            alt=""
-            class="main__card-image"
-          />
-
-          <div class="main__text">
-            <p class="main__card-title">Machu Picchu</p>
-            <img
-              src="./images/Group.svg"
-              alt="corazon-me-gusta"
-              class="like-image"
-            />
-          </div>
-        </div>
-        <div class="main__card">
-          <img src="./images/Trash.svg" alt="" class="main__card-trash" />
-          <img src="./images/uyuni.jpeg" alt="" class="main__card-image" />
-          <div class="main__text">
-            <p class="main__card-title">Salar de uyuni</p>
-            <img
-              src="./images/Group.svg"
-              alt="corazon-me-gusta"
-              class="like-image"
-            />
-          </div>
-        </div>
-        <div class="main__card">
-          <img src="./images/Trash.svg" alt="" class="main__card-trash" />
-          <img src="./images/el_cañi.jpeg" alt="" class="main__card-image" />
-          <div class="main__text">
-            <p class="main__card-title">Santuario El Cañi</p>
-            <img
-              src="./images/Group.svg"
-              alt="corazon me gusta"
-              class="like-image"
-            />
-          </div>
-        </div>
-        <div class="main__card">
-          <img src="./images/Trash.svg" alt="" class="main__card-trash" />
-          <img src="./images/conguillio.jpeg" alt="" class="main__card-image" />
-          <div class="main__text">
-            <p class="main__card-title">Parque Conguillio</p>
-            <img
-              src="./images/Group.svg"
-              alt="corazon me gusta"
-              class="like-image"
-            />
-          </div>
-        </div>
-        <div class="main__card">
-          <img src="./images/Trash.svg" alt="" class="main__card-trash" />
-          <img src="./images/pochoco.jpeg" alt="" class="main__card-image" />
-          <div class="main__text">
-            <p class="main__card-title">Cerro Pochoco</p>
-            <img
-              src="./images/Group.svg"
-              alt="corazon-me-gusta"
-              class="like-image"
-            />
-          </div>
-        </div>
+        </template>
       </main>
 
       <div class="popup popup_profile">
@@ -162,7 +94,6 @@
                 type="text"
                 name="Titulo"
                 placeholder="Titulo"
-                required
               />
 
               <input
@@ -171,9 +102,8 @@
                 type="text"
                 name="Enlace a la pagina"
                 placeholder="Enlace a la pagina"
-                required
               />
-              <button type="submit" class="form__button">Crear</button>
+              <button type="submit" class="form__button">Agregar</button>
             </form>
           </div>
         </div>
