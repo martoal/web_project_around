@@ -1,18 +1,18 @@
-.form1 {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.form1_open {
+.form_open {
   opacity: 1;
   visibility: visible;
 }
-.form2 {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.form2_open {
+.form_open {
   opacity: 1;
   visibility: visible;
 }
