@@ -3,11 +3,17 @@ const popupNewPlace = document.querySelector(".popup_new-card");
 const openProfile = document.getElementById("open-edit");
 const openNewPlace = document.getElementById("open-add");
 const formProfile = document.querySelector("form");
-const formNewPlace = document.querySelector("form");
+const formNewPlace = document.querySelector(".form2");
 const closeProfile = popupProfile.querySelector(".popup__btn-close");
 const closeNewPlace = popupNewPlace.querySelector(".popup__btn-close");
 const template = document.querySelector(".main__template");
 const cardArea = document.querySelector(".main");
+const inputTitle = document.querySelector("#place");
+const inputImage = document.querySelector("#image");
+const popupImage = document.querySelector(".popup_image");
+const closeImage = popupImage.querySelector(".popup__btn-close");
+const cardImage = document.querySelector(".popup__body-image");
+const titleImage = document.querySelector(".popup__title-image");
 
 const initialCards = [
   {
@@ -35,6 +41,15 @@ const initialCards = [
     link: "https://media.istockphoto.com/id/1594170446/es/foto/cuevas-de-m%C3%A1rmol-en-el-lago-general-carrera-patagonia-chile.jpg?s=612x612&w=0&k=20&c=YimSTTQf3lS5YxeNTCS9C-c1ZSSxEZ8H3Gk3mX3tKIo=",
   },
 ];
+function openImagePopup(link, title) {
+  const imagePopup = document.querySelector(".popup_image");
+  const image = imagePopup.querySelector(".popup__body-image");
+  image.src = link;
+  image.alt = title;
+  imagePopup.classList.add("popup_opened");
+  titleImage.textContent = title;
+}
+
 function cardGenerator(name, link) {
   const card = template.cloneNode(true).content.querySelector(".main__card");
   const cardImage = card.querySelector(".main__card-image");
@@ -47,6 +62,10 @@ function cardGenerator(name, link) {
   btnDelete.addEventListener("click", function () {
     card.remove();
   });
+  cardImage.addEventListener("click", function () {
+    openImagePopup(link, name);
+  });
+
   cardImage.src = link;
   cardImage.alt = name;
   cardTitle.textContent = name;
@@ -70,9 +89,12 @@ openNewPlace.addEventListener("click", () => {
 closeNewPlace.addEventListener("click", () => {
   popupNewPlace.classList.remove("popup_opened");
 });
+closeImage.addEventListener("click", () => {
+  popupImage.classList.remove("popup_opened");
+});
 
-formProfile.addEventListener("submit", (e) => {
-  e.preventDefault();
+formProfile.addEventListener("submit", (evt) => {
+  evt.preventDefault();
   const nombre = document.querySelector("#nombre").value;
   const profesion = document.querySelector("#profesion").value;
   console.log(nombre, profesion);
@@ -84,6 +106,6 @@ formProfile.addEventListener("submit", (e) => {
 });
 formNewPlace.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  const cardToAdd = cardGenerator();
+  const cardToAdd = cardGenerator(inputTitle.value, inputImage.value);
   cardArea.prepend(cardToAdd);
 });

@@ -12,6 +12,9 @@
   border-radius: 2%;
   transition: all 200ms ease;
 }
+.popup__title-image {
+  color: white;
+}
 
 .popup_opened {
   opacity: 1;
@@ -46,7 +49,10 @@
   display: flex;
   flex-direction: column;
 }
-
+.popup__body-image {
+  width: 430px;
+  height: 540px;
+}
 .popup__body {
   margin: auto;
   border-radius: 2%;
@@ -54,7 +60,6 @@
   height: 330px;
   background-color: white;
 }
-
 .popup__title {
   width: 330px;
   margin-left: 34px;
