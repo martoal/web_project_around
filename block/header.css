@@ -7,7 +7,7 @@
   border-color: #545454;
 }
 .header__logo {
-  margin: 0%;
+  margin: 20px 0;
 }
 @media screen and (max-width: 799px) {
   .header__logo {

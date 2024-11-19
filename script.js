@@ -1,19 +1,48 @@
 const popupProfile = document.querySelector(".popup_profile");
 const popupNewPlace = document.querySelector(".popup_new-card");
+const popupImage = document.querySelector(".popup_image");
 const openProfile = document.getElementById("open-edit");
 const openNewPlace = document.getElementById("open-add");
-const formProfile = document.querySelector("form");
-const formNewPlace = document.querySelector("#form");
-const closeProfile = popupProfile.querySelector(".popup__btn-close");
-const closeNewPlace = popupNewPlace.querySelector(".popup__btn-close");
+const closePopup = document.querySelectorAll(".popup__btn-close");
+const formProfile = document.querySelector(".form-profile");
+const formNewPlace = document.querySelector(".form-newplace");
 const template = document.querySelector(".main__template");
 const cardArea = document.querySelector(".main");
 const inputTitle = document.querySelector("#place");
 const inputImage = document.querySelector("#image");
-const popupImage = document.querySelector(".popup_image");
-const closeImage = popupImage.querySelector(".popup__btn-close");
 const cardImage = document.querySelector(".popup__body-image");
 const titleImage = document.querySelector(".popup__title-image");
+const inputProfile = formProfile.querySelector(".form__info");
+
+console.log(inputProfile.id);
+const formError = formProfile.querySelectorAll(`.${inputProfile.id}-error`);
+console.log(formError);
+const showError = (input, errorMessage) => {
+  const formError = document.querySelector(`.${input.id}-error`); // Selecciona el span correcto
+  formError.textContent = errorMessage;
+  input.classList.add("form__info_type_error");
+  formError.classList.add("form__input-error_active");
+};
+
+const hideError = (input) => {
+  const formError = document.querySelector(`.${input.id}-error`); // Selecciona el span correcto
+  input.classList.remove("form__info_type_error");
+  formError.textContent = "";
+  formError.classList.remove("form__input-error_active");
+};
+const checkInputValidity = (input) => {
+  if (!input.validity.valid) {
+    showError(input, input.validationMessage);
+  } else {
+    hideError(input);
+  }
+};
+const inputs = document.querySelectorAll(".form__info"); // Selecciona todos los inputs
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    checkInputValidity(input);
+  });
+});
 
 const initialCards = [
   {
@@ -21,7 +50,7 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1713822636006-e87e66b2fa80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    name: "Machu PIcchu",
+    name: "Machu Picchu",
     link: "https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
@@ -41,6 +70,7 @@ const initialCards = [
     link: "https://media.istockphoto.com/id/1594170446/es/foto/cuevas-de-m%C3%A1rmol-en-el-lago-general-carrera-patagonia-chile.jpg?s=612x612&w=0&k=20&c=YimSTTQf3lS5YxeNTCS9C-c1ZSSxEZ8H3Gk3mX3tKIo=",
   },
 ];
+
 function openImagePopup(link, title) {
   const imagePopup = document.querySelector(".popup_image");
   const image = imagePopup.querySelector(".popup__body-image");
@@ -72,40 +102,66 @@ function cardGenerator(name, link) {
   cardArea.append(card);
   return card;
 }
+function cerrarVentana() {
+  // Seleccionar todos los elementos con la clase 'popup_opened' y eliminar esa clase
+  const popupsAbiertos = document.querySelectorAll(".popup_opened");
+  popupsAbiertos.forEach(function (popup) {
+    popup.classList.remove("popup_opened");
+  });
+}
+
 initialCards.forEach(function (item) {
   const newCard = cardGenerator(item.name, item.link);
   cardArea.append(newCard);
 });
-
-openProfile.addEventListener("click", () => {
+closePopup.forEach((button) => {
+  button.addEventListener("click", cerrarVentana);
+});
+function openPopupProfile() {
   popupProfile.classList.add("popup_opened");
-});
-closeProfile.addEventListener("click", () => {
-  popupProfile.classList.remove("popup_opened");
-});
-openNewPlace.addEventListener("click", () => {
+}
+function openPopupNewPlace() {
   popupNewPlace.classList.add("popup_opened");
+}
+inputProfile.addEventListener("input", function (evt) {
+  console.log(evt.target.validity);
 });
-closeNewPlace.addEventListener("click", () => {
-  popupNewPlace.classList.remove("popup_opened");
-});
-closeImage.addEventListener("click", () => {
-  popupImage.classList.remove("popup_opened");
-});
+openProfile.addEventListener("click", openPopupProfile);
+openNewPlace.addEventListener("click", openPopupNewPlace);
 
 formProfile.addEventListener("submit", (evt) => {
   evt.preventDefault();
+
   const nombre = document.querySelector("#nombre").value;
   const profesion = document.querySelector("#profesion").value;
-  console.log(nombre, profesion);
-  const respuesta = document.getElementById("respuesta1");
-  respuesta.textContent = nombre;
-  const aboutNode = document.querySelector(".profile__description");
-  aboutNode.textContent = profesion;
-  popupProfile.classList.remove("popup_opened");
+  const cambioNombre = document.querySelector(".profile__name");
+  cambioNombre.textContent = nombre;
+  const cambioProfesion = document.querySelector(".profile__description");
+  cambioProfesion.textContent = profesion;
+  cerrarVentana();
+});
+
+inputProfile.addEventListener("input", function () {
+  checkInputValidity();
 });
 formNewPlace.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const cardToAdd = cardGenerator(inputTitle.value, inputImage.value);
   cardArea.prepend(cardToAdd);
+  cerrarVentana();
 });
+
+// const user = {
+//   nombre: " Martin",
+//   edad: 33,
+//   nacionalidad: "CHilena",
+//   casado: "falso",
+//   direccion: {
+//     calle: "Los platanos",
+//     numero: 3675,
+//   },
+// };
+// user.caca = "1.66 mts";
+// user.direccion.calle = "Floripondio";
+// console.log(user.direccion["calle"]);
+// console.log(user.nacionalidad):

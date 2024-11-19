@@ -28,8 +28,8 @@
           class="profile__image"
         />
         <div class="profile__data">
-          <h2 id="respuesta1" class="profile__name">Martín Alvarez</h2>
-          <p id="respuesta2" class="profile__description">Explorador</p>
+          <h2 class="profile__name">Martín Alvarez</h2>
+          <p class="profile__description">Explorador</p>
         </div>
         <button type="button" id="open-edit" class="edit-button"></button>
         <button type="button" id="open-add" class="add-button"></button>
@@ -44,7 +44,11 @@
             <div class="main__text">
               <h2 class="main__card-title"></h2>
               <button class="like-image">
-                <img src="./images/Vector2.svg" alt="corazon-me-gusta" />
+                <img
+                  class="like"
+                  src="./images/Vector2.svg"
+                  alt="corazon-me-gusta"
+                />
               </button>
             </div>
           </div>
@@ -65,15 +69,18 @@
           <button class="popup__btn-close"></button>
           <div class="popup__body">
             <h3 class="popup__title">Editar perfil</h3>
-            <form class="form form_profile">
+            <form class="form form-profile" novalidate>
               <input
                 class="form__info"
                 type="text"
                 id="nombre"
                 name="Nombre"
                 placeholder="Nombre"
+                minlength="20"
+                maxlength="40"
                 required
               />
+              <span class="form__info-error nombre-error">esto esta malo</span>
 
               <input
                 class="form__info"
@@ -81,8 +88,11 @@
                 id="profesion"
                 name="Profesion"
                 placeholder="Profesion"
+                minlength="2"
+                maxlength="200"
                 required
               />
+              <span class="form__info-error profesion-error">esto tambn</span>
               <button type="submit" class="form__button">Crear</button>
             </form>
           </div>
@@ -95,21 +105,25 @@
           <button class="popup__btn-close"></button>
           <div class="popup__body">
             <h3 class="popup__title">Nuevo lugar</h3>
-            <form id="form" class="form form_new-card">
+            <form class="form form-newplace" novalidate>
               <input
                 class="form__info"
                 id="place"
                 type="text"
                 name="Titulo"
                 placeholder="Titulo"
+                minlength="2"
+                maxlength="40"
+                required
               />
 
               <input
                 class="form__info"
                 id="image"
-                type="text"
+                type="url"
                 name="Enlace a la pagina"
                 placeholder="Enlace a la pagina"
+                required
               />
               <button type="submit" class="form__button">Agregar</button>
             </form>
