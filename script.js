@@ -16,7 +16,7 @@ const inputProfile = formProfile.querySelector(".form__info");
 const inputNewPlace = formNewPlace.querySelector(".form__info");
 const buttonProfile = formProfile.querySelector(".form__button");
 const buttonNewPlace = formNewPlace.querySelector(".form__button");
-
+const overlay = document.querySelectorAll(".popup__overlay");
 const initialCards = [
   {
     name: "Cerro castillo",
@@ -81,31 +81,16 @@ function cerrarVentana() {
     popup.classList.remove("popup_opened");
   });
 }
-
-// function cerrarVentana(popup) {
-//   popup.classList.remove("popup_opened");
-// }
-
-// const popups = document.querySelectorAll(".popup");
-// closePopup.forEach((popup) => {
-//   popup.addEventListener("mousedown", (evt) => {
-//     if (evt.target === popup) {
-//       cerrarVentana();
-//     }
-//   });
-// });
+overlay.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target === popup) {
+      cerrarVentana();
+    }
+  });
+});
 
 closePopup.forEach((button) => {
   button.addEventListener("click", cerrarVentana);
-});
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    const popupAbierto = document.querySelector(".popup_opened");
-    if (popupAbierto) {
-      cerrarVentana(popupAbierto);
-    }
-  }
 });
 
 initialCards.forEach(function (item) {
@@ -119,6 +104,14 @@ function openPopupNewPlace() {
   popupNewPlace.classList.add("popup_opened");
 }
 
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const popupAbierto = document.querySelector(".popup_opened");
+    if (popupAbierto) {
+      cerrarVentana(popupAbierto);
+    }
+  }
+});
 openProfile.addEventListener("click", openPopupProfile);
 openNewPlace.addEventListener("click", openPopupNewPlace);
 
@@ -132,10 +125,6 @@ formProfile.addEventListener("submit", (evt) => {
   const cambioProfesion = document.querySelector(".profile__description");
   cambioProfesion.textContent = profesion;
   cerrarVentana();
-});
-
-inputProfile.addEventListener("input", function () {
-  checkInputValidity();
 });
 formNewPlace.addEventListener("submit", function (evt) {
   evt.preventDefault();

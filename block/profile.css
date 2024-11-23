@@ -13,11 +13,12 @@
   margin: 0 20px 0 0;
 }
 .profile__data {
-  margin-top: 30px;
+  margin-top: 20px;
   width: 260px;
   height: 77px;
 }
 .profile__name {
+  justify-content: center;
   margin: 0%;
   display: flex;
   max-width: 373px;
@@ -27,7 +28,7 @@
   font-weight: 500;
   line-height: 56px;
   color: #ffffff;
-  align-items: center;
+
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -80,10 +81,12 @@
     margin: auto;
   }
   .profile__data {
+    margin: auto;
     max-width: 100%;
   }
 
   .add-button {
+    margin-right: 40px;
     max-width: 100%;
     justify-content: center;
     margin: auto;
@@ -92,11 +95,17 @@
 }
 
 @media screen and (max-width: 319px) {
+  .edit-button {
+    margin-right: 10px;
+    margin-bottom: 20px;
+  }
   .profile__description {
+    justify-content: center;
     max-width: 100%;
     text-align: center;
   }
   .profile__name {
+    justify-content: center;
     margin-left: 10px;
   }
 }
