@@ -98,32 +98,7 @@ function cerrarVentana() {
 closePopup.forEach((button) => {
   button.addEventListener("click", cerrarVentana);
 });
-// function cerrarVentana(popup) {
-//   popup.classList.remove("popup_opened");
-// }
 
-// // Cierra al hacer clic en la superposición
-// const popups = document.querySelectorAll(".popup");
-// popups.forEach((popup) => {
-//   popup.addEventListener("mousedown", (evt) => {
-//     if (evt.target.classList.contains("popup")) {
-//       console.log("Clic en superposición, cerrando popup.");
-//       cerrarVentana(popup);
-//     }
-//   });
-// });
-
-// // Cierra el popup al hacer clic en el botón de cerrar
-// const closeButtons = document.querySelectorAll(".popup__btn-close");
-
-// closeButtons.forEach((button) => {
-//   button.addEventListener("click", () => {
-//     const popup = button.closest(".popup");
-//     cerrarVentana(popup);
-//   });
-// });
-
-// Cierra el popup al presionar la tecla Escape
 document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
     const popupAbierto = document.querySelector(".popup_opened");
