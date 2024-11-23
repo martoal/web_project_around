@@ -76,11 +76,11 @@
                 id="nombre"
                 name="Nombre"
                 placeholder="Nombre"
-                minlength="20"
+                minlength="2"
                 maxlength="40"
                 required
               />
-              <span class="form__info-error nombre-error">esto esta malo</span>
+              <span class="form__info-error nombre-error"></span>
 
               <input
                 class="form__info"
@@ -92,7 +92,7 @@
                 maxlength="200"
                 required
               />
-              <span class="form__info-error profesion-error">esto tambn</span>
+              <span class="form__info-error profesion-error"></span>
               <button type="submit" class="form__button">Crear</button>
             </form>
           </div>
@@ -116,6 +116,7 @@
                 maxlength="40"
                 required
               />
+              <span class="form__info-error place-error"></span>
 
               <input
                 class="form__info"
@@ -125,6 +126,7 @@
                 placeholder="Enlace a la pagina"
                 required
               />
+              <span class="form__info-error image-error"></span>
               <button type="submit" class="form__button">Agregar</button>
             </form>
           </div>
@@ -137,5 +139,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="validation.js"></script>
   </body>
 </html>

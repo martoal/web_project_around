@@ -13,36 +13,9 @@ const inputImage = document.querySelector("#image");
 const cardImage = document.querySelector(".popup__body-image");
 const titleImage = document.querySelector(".popup__title-image");
 const inputProfile = formProfile.querySelector(".form__info");
-
-console.log(inputProfile.id);
-const formError = formProfile.querySelectorAll(`.${inputProfile.id}-error`);
-console.log(formError);
-const showError = (input, errorMessage) => {
-  const formError = document.querySelector(`.${input.id}-error`); // Selecciona el span correcto
-  formError.textContent = errorMessage;
-  input.classList.add("form__info_type_error");
-  formError.classList.add("form__input-error_active");
-};
-
-const hideError = (input) => {
-  const formError = document.querySelector(`.${input.id}-error`); // Selecciona el span correcto
-  input.classList.remove("form__info_type_error");
-  formError.textContent = "";
-  formError.classList.remove("form__input-error_active");
-};
-const checkInputValidity = (input) => {
-  if (!input.validity.valid) {
-    showError(input, input.validationMessage);
-  } else {
-    hideError(input);
-  }
-};
-const inputs = document.querySelectorAll(".form__info"); // Selecciona todos los inputs
-inputs.forEach((input) => {
-  input.addEventListener("input", () => {
-    checkInputValidity(input);
-  });
-});
+const inputNewPlace = formNewPlace.querySelector(".form__info");
+const buttonProfile = formProfile.querySelector(".form__button");
+const buttonNewPlace = formNewPlace.querySelector(".form__button");
 
 const initialCards = [
   {
@@ -103,19 +76,66 @@ function cardGenerator(name, link) {
   return card;
 }
 function cerrarVentana() {
-  // Seleccionar todos los elementos con la clase 'popup_opened' y eliminar esa clase
   const popupsAbiertos = document.querySelectorAll(".popup_opened");
   popupsAbiertos.forEach(function (popup) {
     popup.classList.remove("popup_opened");
   });
 }
 
+// function cerrarVentana(popup) {
+//   popup.classList.remove("popup_opened");
+// }
+
+// const popups = document.querySelectorAll(".popup");
+// closePopup.forEach((popup) => {
+//   popup.addEventListener("mousedown", (evt) => {
+//     if (evt.target === popup) {
+//       cerrarVentana();
+//     }
+//   });
+// });
+
+closePopup.forEach((button) => {
+  button.addEventListener("click", cerrarVentana);
+});
+// function cerrarVentana(popup) {
+//   popup.classList.remove("popup_opened");
+// }
+
+// // Cierra al hacer clic en la superposición
+// const popups = document.querySelectorAll(".popup");
+// popups.forEach((popup) => {
+//   popup.addEventListener("mousedown", (evt) => {
+//     if (evt.target.classList.contains("popup")) {
+//       console.log("Clic en superposición, cerrando popup.");
+//       cerrarVentana(popup);
+//     }
+//   });
+// });
+
+// // Cierra el popup al hacer clic en el botón de cerrar
+// const closeButtons = document.querySelectorAll(".popup__btn-close");
+
+// closeButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const popup = button.closest(".popup");
+//     cerrarVentana(popup);
+//   });
+// });
+
+// Cierra el popup al presionar la tecla Escape
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const popupAbierto = document.querySelector(".popup_opened");
+    if (popupAbierto) {
+      cerrarVentana(popupAbierto);
+    }
+  }
+});
+
 initialCards.forEach(function (item) {
   const newCard = cardGenerator(item.name, item.link);
   cardArea.append(newCard);
-});
-closePopup.forEach((button) => {
-  button.addEventListener("click", cerrarVentana);
 });
 function openPopupProfile() {
   popupProfile.classList.add("popup_opened");
@@ -123,9 +143,7 @@ function openPopupProfile() {
 function openPopupNewPlace() {
   popupNewPlace.classList.add("popup_opened");
 }
-inputProfile.addEventListener("input", function (evt) {
-  console.log(evt.target.validity);
-});
+
 openProfile.addEventListener("click", openPopupProfile);
 openNewPlace.addEventListener("click", openPopupNewPlace);
 
